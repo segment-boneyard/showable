@@ -4,13 +4,14 @@ var nextTick = require('next-tick');
 /**
  * Hide the view
  */
-function hide(){
+function hide(fn){
   var self = this;
   if(this.hiding) return;
   this.hiding = true;
 
   after(self.el, function(){
     self.emit('hide');
+    if(fn) fn();
   });
 
   nextTick(function(){
@@ -26,7 +27,7 @@ function hide(){
  * are finished. It also removed the hide class on the next
  * tick so that the transition actually paints.
  */
-function show(){
+function show(fn){
   var self = this;
   if(!this.hiding) return;
   this.hiding = false;
@@ -34,6 +35,7 @@ function show(){
 
   after(self.el, function(){
     self.emit('show');
+    if(fn) fn();
   });
 
   nextTick(function(){

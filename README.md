@@ -29,10 +29,14 @@ function MyView() {
 
 ## Methods
 
-### #show()
+### #show(fn)
 
 Show the view. Emits `showing` immediately, and `show` when the view is fully visible (after transitions). Removes `.hide` class.
 
-### #hide()
+Optional callback is fired when it has finished showing.
+
+### #hide(fn)
 
 Hide the view. Emits `hiding` immediately, and `hide` when the view is fully hidden (after transitions). Adds `.hide` class.
+
+Optional callback is fired when it has finished hiding.

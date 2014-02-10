@@ -70,5 +70,19 @@ describe('Showable', function(){
     obj.show();
   });
 
+  it('should have a show callback', function(done){
+    obj.show(function(){
+      done();
+    });
+  })
+
+  it('should have a hide callback', function(done){
+    obj.show(function(){
+      obj.hide(function(){
+        done();
+      });
+    });
+  })
+
 
 })
