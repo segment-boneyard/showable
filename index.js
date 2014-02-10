@@ -44,7 +44,6 @@ function show(fn){
   this.emit('showing');
 
   after(self.el, function(){
-    this.isShowing = false;
     self.emit('show');
     if(fn) fn();
   });
