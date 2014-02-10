@@ -15,13 +15,13 @@ showable(MyView.prototype);
 
 ## Methods
 
-### `.show`
+#### `show`
 
 Show the view. Emits `showing` immediately, and `show` when the view is fully visible (after transitions).
 
 Removes `.hide` class.
 
-### `.hide`
+#### `hide`
 
 Hide the view. Emits `hiding` immediately, and `hide` when the view is fully hidden (after transitions).
 
