@@ -54,9 +54,9 @@ describe('Showable', function(){
     // Push this into the future because
     // 'show' is emitted on the next tick
     setTimeout(function(){
-      assert(count === 1);
+      assert(count === 1, count);
       done();
-    }, 20);
+    }, 30);
   })
 
   it('should hide', function(done){
