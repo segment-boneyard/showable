@@ -5,16 +5,19 @@ var nextTick = require('next-tick');
  * Hide the view
  */
 function hide(fn){
+  var self = this;
 
-  if(this.hiding == null) {
-    this.hiding = this.el.classList.contains('hide');
+  if(this.hidden == null) {
+    this.hidden = this.el.classList.contains('hide');
   }
 
-  var self = this;
-  if(this.hiding) return;
-  this.hiding = true;
+  if(this.hidden || this.animating) return;
+
+  this.hidden = true;
+  this.animating = true;
 
   after(self.el, function(){
+    self.animating = false;
     self.emit('hide');
     if(fn) fn();
   });
@@ -33,17 +36,21 @@ function hide(fn){
  * tick so that the transition actually paints.
  */
 function show(fn){
+  var self = this;
 
-  if(this.hiding == null) {
-    this.hiding = this.el.classList.contains('hide');
+  if(this.hidden == null) {
+    this.hidden = this.el.classList.contains('hide');
   }
 
-  var self = this;
-  if(!this.hiding) return;
-  this.hiding = false;
+  if(this.hidden === false || this.animating) return;
+
+  this.hidden = false;
+  this.animating = true;
+
   this.emit('showing');
 
   after(self.el, function(){
+    self.animating = false;
     self.emit('show');
     if(fn) fn();
   });

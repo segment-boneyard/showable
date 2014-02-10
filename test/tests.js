@@ -61,7 +61,7 @@ describe('Showable', function(){
 
   it('should hide', function(done){
     obj.on('hide', function(){
-      assert(obj.hiding === true);
+      assert(obj.hidden === true);
       done();
     });
     obj.on('show', function(){
