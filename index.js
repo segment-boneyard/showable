@@ -11,7 +11,6 @@ function hide(){
 
   after(self.el, function(){
     self.emit('hide');
-    document.body.removeChild(self.el);
   });
 
   nextTick(function(){
@@ -32,7 +31,6 @@ function show(){
   if(!this.hiding) return;
   this.hiding = false;
   this.emit('showing');
-  document.body.appendChild(self.el);
 
   after(self.el, function(){
     self.emit('show');

@@ -11,18 +11,28 @@ Toggles a `.hide` class on the view.
 var showable = require('showable');
 
 showable(MyView.prototype);
+
+```
+
+Then you might listen for events to add and remove it from the DOM:
+
+```js
+function MyView() {
+  this.on('showing', function(){
+    document.body.appendChild(obj.el);
+  });
+  this.on('hide', function(){
+    document.body.removeChild(obj.el);
+  });
+}
 ```
 
 ## Methods
 
-#### `show`
+### #show()
 
-Show the view. Emits `showing` immediately, and `show` when the view is fully visible (after transitions).
+Show the view. Emits `showing` immediately, and `show` when the view is fully visible (after transitions). Removes `.hide` class.
 
-Removes `.hide` class.
+### #hide()
 
-#### `hide`
-
-Hide the view. Emits `hiding` immediately, and `hide` when the view is fully hidden (after transitions).
-
-Adds `.hide` class.
+Hide the view. Emits `hiding` immediately, and `hide` when the view is fully hidden (after transitions). Adds `.hide` class.

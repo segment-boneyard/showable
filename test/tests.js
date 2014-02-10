@@ -9,7 +9,17 @@ describe('Showable', function(){
     obj = new Emitter();
     obj.el = document.createElement('div');
     obj.el.classList.add('hide');
+
     Showable(obj);
+
+    obj.on('showing', function(){
+      document.body.appendChild(obj.el);
+    });
+
+    obj.on('hide', function(){
+      document.body.removeChild(obj.el);
+    });
+
   });
 
   it('should not hide if already hidden', function(done){
