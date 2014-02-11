@@ -8,7 +8,7 @@ function hide(fn){
   var self = this;
 
   if(this.hidden == null) {
-    this.hidden = this.el.classList.contains('hide');
+    this.hidden = this.el.classList.contains('hidden');
   }
 
   if(this.hidden || this.animating) return;
@@ -23,7 +23,7 @@ function hide(fn){
   });
 
   nextTick(function(){
-    self.el.classList.add('hide');
+    self.el.classList.add('hidden');
   });
 
   this.emit('hiding');
@@ -39,7 +39,7 @@ function show(fn){
   var self = this;
 
   if(this.hidden == null) {
-    this.hidden = this.el.classList.contains('hide');
+    this.hidden = this.el.classList.contains('hidden');
   }
 
   if(this.hidden === false || this.animating) return;
@@ -56,7 +56,7 @@ function show(fn){
   });
 
   nextTick(function(){
-    self.el.classList.remove('hide');
+    self.el.classList.remove('hidden');
   });
 
   return this;
