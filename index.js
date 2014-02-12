@@ -22,10 +22,7 @@ function hide(fn){
     if(fn) fn();
   });
 
-  nextTick(function(){
-    self.el.classList.add('hidden');
-  });
-
+  self.el.classList.add('hidden');
   this.emit('hiding');
   return this;
 }
@@ -54,6 +51,8 @@ function show(fn){
     self.emit('show');
     if(fn) fn();
   });
+
+  this.el.offsetHeight;
 
   nextTick(function(){
     self.el.classList.remove('hidden');
