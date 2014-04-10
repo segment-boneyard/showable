@@ -8,7 +8,7 @@ describe('Showable', function(){
   beforeEach(function(){
     obj = new Emitter();
     obj.el = document.createElement('div');
-    obj.el.classList.add('hide');
+    obj.el.classList.add('hidden');
 
     Showable(obj);
 
@@ -36,11 +36,6 @@ describe('Showable', function(){
       done();
     })
     obj.show();
-  });
-
-  it('should show in the next tick', function(){
-    obj.show();
-    assert(obj.el.classList.contains('hide'));
   });
 
   it('should not show if showing', function(done){

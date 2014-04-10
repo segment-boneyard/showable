@@ -1,5 +1,4 @@
 var after = require('after-transition').once;
-var nextTick = require('next-tick');
 
 /**
  * Hide the view
@@ -22,7 +21,8 @@ function hide(fn){
     if(fn) fn();
   });
 
-  self.el.classList.add('hidden');
+  this.el.offsetHeight;
+  this.el.classList.add('hidden');
   this.emit('hiding');
   return this;
 }
@@ -53,11 +53,7 @@ function show(fn){
   });
 
   this.el.offsetHeight;
-
-  nextTick(function(){
-    self.el.classList.remove('hidden');
-  });
-
+  this.el.classList.remove('hidden');
   return this;
 }
 
