@@ -10,13 +10,11 @@ function hide(fn){
     this.hidden = this.el.classList.contains('hidden');
   }
 
-  if(this.hidden || this.animating) return;
+  if(this.hidden) return;
 
   this.hidden = true;
-  this.animating = true;
 
   after(self.el, function(){
-    self.animating = false;
     self.emit('hide');
     if(fn) fn();
   });
@@ -39,15 +37,13 @@ function show(fn){
     this.hidden = this.el.classList.contains('hidden');
   }
 
-  if(this.hidden === false || this.animating) return;
+  if(this.hidden === false) return;
 
   this.hidden = false;
-  this.animating = true;
 
   this.emit('showing');
 
   after(self.el, function(){
-    self.animating = false;
     self.emit('show');
     if(fn) fn();
   });
