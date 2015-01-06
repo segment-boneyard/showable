@@ -1,5 +1,6 @@
 {
   "name": "showable",
+  "version": "0.1.2",
   "description": "Make a view showable and hideable",
   "scripts": ["index.js"],
   "dependencies": {
